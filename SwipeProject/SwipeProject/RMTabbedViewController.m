@@ -10,6 +10,8 @@
 #import "InfiniTabBar.h"
 #import "RMTableViewController.h"
 
+#define kDefaultResouceUrl @"http://www.idreems.com/openapi/collect_api.php?type=image"
+
 #define kDefaultTitle @"随便逛逛"
 #define kTitleFontSize 18
 #define kNavigationBarHeight 44
@@ -141,6 +143,7 @@
     rc.origin.x = 0;
     rc.size.height = rc.size.height-kTabBarHeight-kNavigationBarHeight;
     self.tableView = [[RMTableViewController alloc]initWithFrame:rc];
+    [self.tableView setUrl:kDefaultResouceUrl];
     [self.view addSubview:tableView.view];
     self.tableView.delegate = self;
 }

@@ -21,6 +21,7 @@
 
 #define kInitItemCount 10
 #define kIncrementItemCount 10
+#define kLoadMoreFakeDelay 1.0f
 #define kDefaultFilePath @"cache"
 
 #define kRefreshFileName(url) [NSString stringWithFormat:@"%@%@",@"Refresh_",[CommonHelper cachePathForKey:url] ]
@@ -190,7 +191,8 @@ UITableViewDelegate
         tableViewItemCount = (self.items?[self.items count]:0);
     }
     //just load more local data
-    [self tableViewDidFinishedLoading];
+    [self performSelector:@selector(tableViewDidFinishedLoading) withObject:self afterDelay:kLoadMoreFakeDelay];
+    //[self tableViewDidFinishedLoading];
 }
 #pragma mark - Scroll
 
@@ -212,7 +214,7 @@ UITableViewDelegate
         tableViewItemCount = MIN(self.items?[self.items count]:0,kInitItemCount);
     }
     [tableView tableViewDidFinishedLoading];
-    [tableView reloadData];
+    [self notifyDatasetChanged];
     NSLog(@"tableViewDidFinishedLoading");
 }
 -(NSMutableArray*)loadContent:(NSString*)fileName
