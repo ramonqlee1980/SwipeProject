@@ -24,6 +24,7 @@
 		305D53CD17347DA8003F7913 /* RMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 305D53CC17347DA7003F7913 /* RMAppDelegate.m */; };
 		305D53D317347DA8003F7913 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 305D53D217347DA8003F7913 /* Default-568h@2x.png */; };
 		305D53F317347E98003F7913 /* touchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 305D53F017347E98003F7913 /* touchTableView.m */; };
+		30AA9175173E3CD3006B6B49 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA9174173E3CD3006B6B49 /* SwipeView.m */; };
 		30D9D6A8173865F20049E877 /* AddBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D9D698173865F10049E877 /* AddBookmarkViewController.m */; };
 		30D9D6A9173865F20049E877 /* BookmarkObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D9D69A173865F10049E877 /* BookmarkObject.m */; };
 		30D9D6AA173865F20049E877 /* CIALBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30D9D69B173865F10049E877 /* CIALBrowser.bundle */; };
@@ -128,6 +129,8 @@
 		305D53D217347DA8003F7913 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		305D53EF17347E98003F7913 /* touchTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touchTableView.h; sourceTree = "<group>"; };
 		305D53F017347E98003F7913 /* touchTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = touchTableView.m; sourceTree = "<group>"; };
+		30AA9173173E3CD3006B6B49 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		30AA9174173E3CD3006B6B49 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		30D9D697173865F10049E877 /* AddBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBookmarkViewController.h; sourceTree = "<group>"; };
 		30D9D698173865F10049E877 /* AddBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBookmarkViewController.m; sourceTree = "<group>"; };
 		30D9D699173865F10049E877 /* BookmarkObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkObject.h; sourceTree = "<group>"; };
@@ -377,6 +380,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		30AA9172173E3CD3006B6B49 /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				30AA9173173E3CD3006B6B49 /* SwipeView.h */,
+				30AA9174173E3CD3006B6B49 /* SwipeView.m */,
+			);
+			path = SwipeView;
+			sourceTree = "<group>";
+		};
 		30D9D696173865F10049E877 /* CIALBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +598,7 @@
 		30E6E7E11734E5A000EDE8D2 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				30AA9172173E3CD3006B6B49 /* SwipeView */,
 				3023466C173A2A1D001802DA /* Gifview */,
 				30234657173A29EC001802DA /* SDWebImage */,
 				30E1A9821739F0F60027F2DD /* InfiniTabBar */,
@@ -764,6 +777,7 @@
 				3023466A173A29EC001802DA /* SDWebImageManager.m in Sources */,
 				3023466B173A29EC001802DA /* UIImageView+WebCache.m in Sources */,
 				3023466F173A2A1D001802DA /* GifView.m in Sources */,
+				30AA9175173E3CD3006B6B49 /* SwipeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

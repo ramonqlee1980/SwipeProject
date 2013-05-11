@@ -19,6 +19,8 @@
 //url is pulled from server and others are derived from this url
 #define kDefaultResouceUrl @"http://www.idreems.com/openapi/collect_api.php?type=image"
 
+#define kInitItemCount 10
+#define kIncrementItemCount 10
 #define kDefaultFilePath @"cache"
 
 #define kRefreshFileName(url) [NSString stringWithFormat:@"%@%@",@"Refresh_",[CommonHelper cachePathForKey:url] ]
@@ -46,6 +48,7 @@ UITableViewDelegate
     NSMutableArray *items;
     BOOL refreshing;
     CGRect frame;
+    NSUInteger tableViewItemCount;
 }
 @property(nonatomic,assign)FileModel* fileModel;
 @property(nonatomic,assign)NSMutableArray *items;
@@ -99,6 +102,7 @@ UITableViewDelegate
     [self.view addSubview:tableView];
     
     fileModel = [[FileModel alloc]init];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetTimeLine:)    name:kTimelineJsonRefreshChanged(self.resourceUrl)          object:nil];
     
     //pulling data;
@@ -109,7 +113,6 @@ UITableViewDelegate
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -120,8 +123,8 @@ UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return self.items?[self.items count]:0;
+    //load more
+    return (0==tableViewItemCount)?MIN(self.items?[self.items count]:0,kInitItemCount):tableViewItemCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -131,13 +134,14 @@ UITableViewDelegate
     
     // Configure the cell...
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     //
     RMCollectJson* data = [self.items objectAtIndex:indexPath.row];
     cell.textLabel.text = data.title;
+    cell.detailTextLabel.text = data.author;
     return cell;
 }
 
@@ -173,10 +177,20 @@ UITableViewDelegate
     [self performSelectorInBackground:@selector(fillTableViewDataSource:) withObject:path];
 }
 //Implement this method if headerOnly is false
-- (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView
+- (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tView
 {
-    NSLog(@"pullingTableViewDidStartLoading");
+    NSLog(@"pullingTableViewDidStartLoading and just return");
+    // Return the number of rows in the section.
+    if(tableViewItemCount < (self.items?[self.items count]:0))
+    {
+        tableViewItemCount +=kIncrementItemCount;
+    }
+    //exceed actual item count?
+    if (tableViewItemCount > (self.items?[self.items count]:0)) {
+        tableViewItemCount = (self.items?[self.items count]:0);
+    }
     //just load more local data
+    [self tableViewDidFinishedLoading];
 }
 #pragma mark - Scroll
 
@@ -193,7 +207,13 @@ UITableViewDelegate
     if (refreshing) {
         refreshing = NO;
     }
+    if(tableViewItemCount<=0)
+    {
+        tableViewItemCount = MIN(self.items?[self.items count]:0,kInitItemCount);
+    }
     [tableView tableViewDidFinishedLoading];
+    [tableView reloadData];
+    NSLog(@"tableViewDidFinishedLoading");
 }
 -(NSMutableArray*)loadContent:(NSString*)fileName
 {
@@ -214,12 +234,6 @@ UITableViewDelegate
     }
     return dataArray;
     
-}
--(void)refreshDone
-{
-    refreshing = NO;
-    [tableView tableViewDidFinishedLoading];
-    [tableView reloadData];
 }
 -(BOOL)fillTableViewDataSource:(NSString*)fileName
 {
@@ -274,7 +288,7 @@ UITableViewDelegate
     }
     
     
-    [self performSelectorOnMainThread:@selector(refreshDone) withObject:nil waitUntilDone:TRUE];
+    [self performSelectorOnMainThread:@selector(tableViewDidFinishedLoading) withObject:nil waitUntilDone:TRUE];
 }
 //merge and remove duplicate items
 -(void)mergeArray:(NSMutableArray*)desArray withObjects:(NSArray *)objects
@@ -307,8 +321,8 @@ UITableViewDelegate
 
 -(void) GetErr:(ASIHTTPRequest *)request
 {
-    refreshing = NO;
-    [tableView tableViewDidFinishedLoading];
+    [self tableViewDidFinishedLoading];
+    
     if([self.view respondsToSelector:@selector(makeToast:)])
     {
         [self.view performSelectorOnMainThread:@selector(makeToast:) withObject:@"连接网络失败，请检查是否开启移动数据" waitUntilDone:YES];
@@ -343,11 +357,12 @@ UITableViewDelegate
 -(void)setUrl:(NSString*)currentUrl
 {
     //remove notification observer
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self refreshDone];
+    [self tableViewDidFinishedLoading];
     
     self.resourceUrl = currentUrl;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetTimeLine:)    name:kTimelineJsonRefreshChanged(self.resourceUrl)          object:nil];
+    NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter removeObserver:self];
+    [notificationCenter addObserver:self selector:@selector(didGetTimeLine:)    name:kTimelineJsonRefreshChanged(self.resourceUrl)          object:nil];
     [tableView launchRefreshing];
 }
 @end
