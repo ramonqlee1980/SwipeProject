@@ -142,7 +142,7 @@ UITableViewDelegate
     //
     RMCollectJson* data = [self.items objectAtIndex:indexPath.row];
     cell.textLabel.text = data.title;
-    cell.detailTextLabel.text = data.author;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\t%@",data.author,data.date];
     return cell;
 }
 

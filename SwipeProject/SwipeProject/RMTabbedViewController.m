@@ -166,7 +166,6 @@
 }
 
 - (void)infiniTabBar:(InfiniTabBar *)tabBar didSelectItemWithTag:(int)tag {
-    #define kDefaultResouceUrl @"http://www.idreems.com/openapi/collect_api.php?type=image"
     //TODO::change to another channel
     [tableView setUrl:kDefaultResouceUrl];
 }

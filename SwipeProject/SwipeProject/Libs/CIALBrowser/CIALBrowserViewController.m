@@ -434,6 +434,18 @@
 }
 
 - (void) webViewDidFinishLoad:(UIWebView *) sender {
+    // Load the JavaScript code from the Resources and inject it into the web page
+    NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"CIALBrowser" ofType:@"bundle"]];
+    
+    NSString *path = [bundle pathForResource:@"JSTools" ofType:@"js"];
+    NSString *jsCode = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    [webView stringByEvaluatingJavaScriptFromString: jsCode];
+    
+    // get the Tags at the touch location
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"removeLinks(%@);",@"document"]];
+//    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"removeAllOccurencesOfStringForElement(%@,%@);",@"document.body",@"ZAKER"]];
+    
+    
     // Disable the defaut actionSheet when doing a long press
     [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';"];
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
