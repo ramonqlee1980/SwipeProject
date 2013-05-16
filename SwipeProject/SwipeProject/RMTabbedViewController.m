@@ -10,7 +10,7 @@
 #import "InfiniTabBar.h"
 #import "RMTableViewController.h"
 
-#define kDefaultResouceUrl @"http://www.idreems.com/openapi/collect_api.php?type=image"
+#define kDefaultResouceUrl @"http://www.idreems.com/openapi/aster.php?type=shuangzi"
 
 #define kDefaultTitle @"随便逛逛"
 #define kTitleFontSize 18
@@ -28,6 +28,8 @@
 
 
 @interface RMTabbedViewController ()<InfiniTabBarDelegate,UITabbedTableViewDelegate>
+@property(nonatomic,copy)NSString* mUrl;
+@property(nonatomic,copy)NSString* mTitle;
 @property(nonatomic,assign)InfiniTabBar* tabBar;
 @property(nonatomic,assign)RMTableViewController* tableView;
 @end
@@ -35,7 +37,17 @@
 @implementation RMTabbedViewController
 @synthesize tabBar;
 @synthesize tableView;
+@synthesize mUrl;
+@synthesize mTitle;
 
+-(id)init:(NSString*)url withTitle:(NSString*)title
+{
+    if (self = [super init]) {
+        self.mUrl = url;
+        self.mTitle = title;
+    }
+    return self;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -46,6 +58,7 @@
 }
 -(void)dealloc
 {
+    self.mUrl = nil;
     self.tabBar = nil;
     self.tableView = nil;
     [super dealloc];
@@ -57,51 +70,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    // Items
-	UITabBarItem *favorites = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:0];
-	UITabBarItem *topRated = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemTopRated tag:1];
-	UITabBarItem *featured = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:2];
-	UITabBarItem *recents = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:3];
-	UITabBarItem *contacts = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:4];
-	UITabBarItem *history = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemHistory tag:5];
-	UITabBarItem *bookmarks = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:6];
-	UITabBarItem *search = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:7];
-	UITabBarItem *downloads = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemDownloads tag:8]; downloads.badgeValue = @"2";
-	UITabBarItem *mostRecent = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostRecent tag:9];
-	UITabBarItem *mostViewed = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostViewed tag:10];
-	
-	// Tab bar
-	self.tabBar = [[InfiniTabBar alloc] initWithItems:[NSArray arrayWithObjects:favorites,
-													   topRated,
-													   featured,
-													   recents,
-													   contacts,
-													   history,
-													   bookmarks,
-													   search,
-													   downloads,
-													   mostRecent,
-													   mostViewed, nil]];
-	
-	[favorites release];
-	[topRated release];
-	[featured release];
-	[recents release];
-	[contacts release];
-	[history release];
-	[bookmarks release];
-	[search release];
-	[downloads release];
-	[mostRecent release];
-	[mostViewed release];
-	
-	// Don't show scroll indicator
-	self.tabBar.showsHorizontalScrollIndicator = YES;
-	self.tabBar.infiniTabBarDelegate = self;
-	self.tabBar.bounces = YES;
-	//add tabbedview
-	[self.view addSubview:self.tabBar];
     
     //添加headbar
     UIImageView *headView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:kNavigationBarBackground]];
@@ -120,7 +88,7 @@
     
     UIButton* fourTypebtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [fourTypebtn setFrame:CGRectMake(kMarginToBoundaryX+kDefaultButtonSize,kMarginToTopBoundary,kMiddleSpace,kDefaultButtonSize)];
-    [fourTypebtn setTitle:kDefaultTitle forState:UIControlStateNormal];
+    [fourTypebtn setTitle:self.mTitle?self.mTitle:kDefaultTitle forState:UIControlStateNormal];
     [fourTypebtn.titleLabel setFont:[UIFont boldSystemFontOfSize:kTitleFontSize]];
     fourTypebtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [fourTypebtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -132,7 +100,7 @@
     UIButton* writebtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [writebtn setFrame:CGRectMake(kDeviceWidth-kDefaultButtonSize-kMarginToBoundaryX,kMarginToTopBoundary,kDefaultButtonSize,kDefaultButtonSize)];
     [writebtn setImage:[UIImage imageNamed:kRightSideBarButtonBackground] forState:UIControlStateNormal];
-    [writebtn addTarget:self action:@selector(BtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [writebtn addTarget:self action:@selector(saveAsDefaultAster:) forControlEvents:UIControlEventTouchUpInside];
     //    [writebtn setTag:FWrite];
     [writebtn setHidden:NO];
     [self.view addSubview:writebtn];
@@ -141,13 +109,36 @@
     CGRect rc = [[UIScreen mainScreen]applicationFrame];
     rc.origin.y = kNavigationBarHeight;
     rc.origin.x = 0;
-    rc.size.height = rc.size.height-kTabBarHeight-kNavigationBarHeight;
+    rc.size.height = rc.size.height-kNavigationBarHeight;
     self.tableView = [[RMTableViewController alloc]initWithFrame:rc];
-    [self.tableView setUrl:kDefaultResouceUrl];
+    [self.tableView setUrl:self.mUrl?self.mUrl:kDefaultResouceUrl];
     [self.view addSubview:tableView.view];
     self.tableView.delegate = self;
 }
+-(void)saveAsDefaultAster:(UIView*)sender
+{
+    NSUserDefaults* setting = [NSUserDefaults standardUserDefaults];
 
+    //already set?
+    NSDictionary* dict = [setting objectForKey:kAsterName];
+    if (dict) {
+        if (NSOrderedSame==[self.mTitle compare:[dict objectForKey:kTitle]]) {
+            [self showToast:[NSString stringWithFormat:@"当前星座已经为 %@，无需设置!",self.mTitle]];
+            return;
+        }
+    }
+    
+    [setting setObject:[NSDictionary dictionaryWithObjectsAndKeys:self.mTitle, kTitle,self.mUrl,kUrl,nil] forKey:kAsterName];
+    [setting synchronize];
+    [self showToast:[NSString stringWithFormat:@"已将 %@ 设置为缺省星座!",self.mTitle]];
+}
+-(void)showToast:(NSString*)msg
+{
+    if ([self.view respondsToSelector:@selector(makeToast:)]) {
+        
+        [self.view performSelector:@selector(makeToast:) withObject:msg];
+    }
+}
 -(void)BtnClicked:(UIView*)sender
 {
     

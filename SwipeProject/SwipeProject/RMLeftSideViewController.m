@@ -39,8 +39,10 @@ static NSString* reuseIdentifier = @"UITableViewCellStyleDefault";
     [super viewDidLoad];
     //set current view's width to accord with sideview
     CGRect rc = self.view.frame;
+//    rc.origin.y = 0;
     rc.size.width = kDeviceWidth-kSideBarMargin;
     self.view.frame = rc;
+    [self.view setBackgroundColor:[UIColor greenColor]];
 
 	// Do any additional setup after loading the view.
     //TODO::load needed views
@@ -63,35 +65,38 @@ static NSString* reuseIdentifier = @"UITableViewCellStyleDefault";
     //TODO:: popular channels
     //localizedstring to be added
     //respond to whenSelected
+    //TODO::bundle data
+    //icon
+    //text
+    //url
+    
     [self addSection:^(JMStaticContentTableViewSection *section, NSUInteger sectionIndex) {
-        //时尚妆容
-		[section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-			staticContentCell.reuseIdentifier =reuseIdentifier;
-			cell.selectionStyle = UITableViewCellStyleValue1;
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            
-            
-			cell.textLabel.text = NSLocalizedString(@"PopularMakeup", @"");
-		} whenSelected:^(NSIndexPath *indexPath) {
-			if (delegate && [delegate respondsToSelector:@selector(leftSideBarSelectWithController:)])
-            {
-                [delegate leftSideBarSelectWithController:[self subController:kPopularMakeupIndex]];
-            }
-		}];
         
-        //都市丽人
-        [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
-			staticContentCell.reuseIdentifier =reuseIdentifier;
-			cell.selectionStyle = UITableViewCellStyleValue1;
-            cell.accessoryType = UITableViewCellAccessoryNone;
+        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"LeftChannels" ofType:@"plist"];
+        NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+        NSLog(@"%@", data);//直接打印数据
+        
+        //add into section
+        for (NSDictionary* dict in [data allValues]) {
+            NSString* title = [dict objectForKey:kTitle];
+            NSString* url = [dict objectForKey:kUrl];
+//            NSString* icon = [dict objectForKey:kIcon];
+//            NSString* timeSpan = [dict objectForKey:kTimeSpan];
             
-			cell.textLabel.text = NSLocalizedString(@"CityBeautyMakeup", @"");
-		} whenSelected:^(NSIndexPath *indexPath) {
-			if (delegate && [delegate respondsToSelector:@selector(leftSideBarSelectWithController:)])
-            {
-                [delegate leftSideBarSelectWithController:[self subController:kCityBeautyMakeup]];
-            }
-		}];
+            [section addCell:^(JMStaticContentTableViewCell *staticContentCell, UITableViewCell *cell, NSIndexPath *indexPath) {
+                staticContentCell.reuseIdentifier =reuseIdentifier;
+                cell.selectionStyle = UITableViewCellStyleValue1;
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                
+                
+                cell.textLabel.text = title;
+            } whenSelected:^(NSIndexPath *indexPath) {
+                if (delegate && [delegate respondsToSelector:@selector(leftSideBarSelectWithController:)])
+                {
+                    [delegate leftSideBarSelectWithController:[self subViewController:url withTitle:title]];
+                }
+            }];
+        }
         
 	}];
 }
@@ -107,6 +112,11 @@ static NSString* reuseIdentifier = @"UITableViewCellStyleDefault";
     [self.tableView reloadData];
 }
 #pragma mark viewcontrollers
+-(UIViewController*)subViewController:(NSString*)url withTitle:(NSString*)title
+{
+    //kPopularMakeupIndex
+    return [[[RMTabbedViewController alloc]init:url withTitle:title]autorelease];
+}
 -(UIViewController*)subController:(NSInteger)index
 {
     //kPopularMakeupIndex

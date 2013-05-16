@@ -13,5 +13,5 @@
 @end
 
 @interface RMTabbedViewController : UIViewController
-
+-(id)init:(NSString*)url withTitle:(NSString*)title;
 @end

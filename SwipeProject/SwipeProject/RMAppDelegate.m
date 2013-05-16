@@ -12,13 +12,25 @@
 #import "RMRightSideViewController.h"
 #import "RMTabbedViewController.h"
 
+
+
+
 @implementation RMAppDelegate
 
 #pragma mark SideBarViewControllerDelegate
 - (UIViewController*)middleViewController
 {
     //TODO::subchannel of current channel
-    return [[[RMTabbedViewController alloc]init]autorelease];
+    NSString* title = nil;
+    NSString* url = nil;
+    NSUserDefaults* setting = [NSUserDefaults standardUserDefaults];
+    NSDictionary* dict = [setting objectForKey:kAsterName];
+    if (dict) {
+        title = [dict objectForKey:kTitle];
+        url = [dict objectForKey:kUrl];
+    }
+    
+    return [[[RMTabbedViewController alloc]init:url withTitle:title]autorelease];
 }
 -(UIViewController*)leftViewController:(id<SiderBarDelegate>)delegate
 {
@@ -38,7 +50,7 @@
 #pragma mark AppDelegate
 - (void)dealloc
 {
-
+    
     [_window release];
     [super dealloc];
 }
@@ -48,15 +60,33 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
+    [self setDefaultSettingsIfNotSet];
+    
     SideBarViewController* sideBarController = [[SideBarViewController alloc]initWithNibName:@"SideBarViewController" bundle:nil];
     sideBarController.delegate = self;
-//    SwipeNavigationController *nav=[[SwipeNavigationController alloc]initWithRootViewController:sideBarController];
     self.window.rootViewController = sideBarController;
     [sideBarController release];
     [self.window makeKeyAndVisible];
     return YES;
 }
-
+//当首次进入时，设置程序的初始值
+-(void)setDefaultSettingsIfNotSet
+{
+    NSUserDefaults* setting = [NSUserDefaults standardUserDefaults];
+    NSDictionary* dict = [setting objectForKey:kAsterName];
+    if (!dict) {
+        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"LeftChannels" ofType:@"plist"];
+        NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+        NSLog(@"%@", data);//直接打印数据
+        //add into section
+        for (NSDictionary* item in [data allValues]) {
+            //set
+            [setting setObject:item forKey:kAsterName];
+            [setting synchronize];
+            break;
+        }
+    }
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -65,7 +95,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

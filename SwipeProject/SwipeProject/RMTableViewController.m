@@ -19,7 +19,7 @@
 //url is pulled from server and others are derived from this url
 #define kDefaultResouceUrl @"http://www.idreems.com/openapi/collect_api.php?type=image"
 
-#define kInitItemCount 10
+#define kInitItemCount 20
 #define kIncrementItemCount 10
 #define kLoadMoreFakeDelay 1.0f
 #define kDefaultFilePath @"cache"

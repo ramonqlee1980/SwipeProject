@@ -19,3 +19,10 @@
 
 #define kSideBarMargin  50
 
+//const for aster
+#define kAsterName @"kAsterName"
+
+#define kTitle @"Title"
+#define kUrl @"Url"
+#define kIcon @"Icon"
+#define kTimeSpan @"TimeSpan"

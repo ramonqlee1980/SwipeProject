@@ -95,6 +95,7 @@
 		30E6E7F51734E5A000EDE8D2 /* StaticTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E6E7EB1734E5A000EDE8D2 /* StaticTextFieldTableViewCell.m */; };
 		30E6E7F61734E5A000EDE8D2 /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E6E7EE1734E5A000EDE8D2 /* SideBarViewController.m */; };
 		30E6E7F71734E5A000EDE8D2 /* SideBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E6E7EF1734E5A000EDE8D2 /* SideBarViewController.xib */; };
+		30F9F0F617446AA9008835E3 /* LeftChannels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30F9F0F517446AA9008835E3 /* LeftChannels.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -261,6 +262,7 @@
 		30E6E7ED1734E5A000EDE8D2 /* SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarViewController.h; sourceTree = "<group>"; };
 		30E6E7EE1734E5A000EDE8D2 /* SideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarViewController.m; sourceTree = "<group>"; };
 		30E6E7EF1734E5A000EDE8D2 /* SideBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideBarViewController.xib; sourceTree = "<group>"; };
+		30F9F0F517446AA9008835E3 /* LeftChannels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LeftChannels.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +378,7 @@
 				305D53C817347DA7003F7913 /* main.m */,
 				305D53CA17347DA7003F7913 /* SwipeProject-Prefix.pch */,
 				305D53D217347DA8003F7913 /* Default-568h@2x.png */,
+				30F9F0F517446AA9008835E3 /* LeftChannels.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				30234666173A29EC001802DA /* LICENSE in Resources */,
 				30234667173A29EC001802DA /* README.md in Resources */,
 				30234673173A2D59001802DA /* head_background.png in Resources */,
+				30F9F0F617446AA9008835E3 /* LeftChannels.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
