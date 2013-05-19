@@ -61,23 +61,37 @@ const float MoveAnimationDuration = 0.2;
         [self middleViewController:[self.delegate middleViewController]];
     }
     
-  //  [self addChildViewController:_leftSideBarViewController];
-    [self addChildViewController:self.rightSideBarViewController];
-    [_navBackView addSubview:self.leftSideBarViewController.view];
-    [_navBackView addSubview:self.rightSideBarViewController.view];
+    //  [self addChildViewController:_leftSideBarViewController];
+    if(self.rightSideBarViewController)
+    {
+        [self addChildViewController:self.rightSideBarViewController];
+        [_navBackView addSubview:self.rightSideBarViewController.view];
+    }
+    
+    if(self.leftSideBarViewController)
+    {
+        [_navBackView addSubview:self.leftSideBarViewController.view];
+    }
+    
     panGestureReconginzer  = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panInContentView:)];
     [self.contentView addGestureRecognizer:panGestureReconginzer];
 }
 - (void)showSideBarControllerWithDirection:(SideBarShowDirection)direction
 {
-    
     if (direction!=SideBarShowDirectionNone) {
         UIView *view ;
         if (direction == SideBarShowDirectionLeft)
         {
+            if (nil==self.leftSideBarViewController) {
+                return;
+            }
             view = self.leftSideBarViewController.view;
         }else
         {
+            if(nil==self.rightSideBarViewController)
+            {
+                return;
+            }
             view = self.rightSideBarViewController.view;
         }
         [self.navBackView bringSubviewToFront:view];
@@ -141,9 +155,15 @@ const float MoveAnimationDuration = 0.2;
         UIView *view ;
         if (translation+currentTranslate>0)
         {
+            if (nil==self.leftSideBarViewController) {
+                return;
+            }
             view = self.leftSideBarViewController.view;
         }else
         {
+            if (nil==self.rightSideBarViewController) {
+                return;
+            }
             view = self.rightSideBarViewController.view;
         }
         [self.navBackView bringSubviewToFront:view];

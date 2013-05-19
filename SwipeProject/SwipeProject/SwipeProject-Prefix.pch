@@ -19,6 +19,23 @@
 
 #define kSideBarMargin  50
 
+
+#define kDefaultTitle @"随便逛逛"
+#define kTitleFontSize 18
+#define kNavigationBarHeight 44
+#define kMarginToBoundaryX 8
+#define kDefaultButtonSize 32
+#define kMarginToTopBoundary (kNavigationBarHeight-kDefaultButtonSize)/2
+#define kMiddleSpace kDeviceWidth-2*kDefaultButtonSize-2*kMarginToBoundaryX
+#define kTabBarHeight 49
+#define kNavigationBarHeight 44
+
+
+#define kNavigationBarBackground @"head_background.png"
+#define kMainBackgound @"main_background.png"
+#define kLeftSideBarButtonBackground @"icon_pic_enable.png"
+#define kRightSideBarButtonBackground @"icon_new_enable.png"
+
 //const for aster
 #define kAsterName @"kAsterName"
 

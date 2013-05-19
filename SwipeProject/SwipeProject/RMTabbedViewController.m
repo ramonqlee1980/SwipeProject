@@ -12,20 +12,6 @@
 
 #define kDefaultResouceUrl @"http://www.idreems.com/openapi/aster.php?type=shuangzi"
 
-#define kDefaultTitle @"随便逛逛"
-#define kTitleFontSize 18
-#define kNavigationBarHeight 44
-#define kMarginToBoundaryX 8
-#define kDefaultButtonSize 32
-#define kMarginToTopBoundary (kNavigationBarHeight-kDefaultButtonSize)/2
-#define kMiddleSpace kDeviceWidth-2*kDefaultButtonSize-2*kMarginToBoundaryX
-
-
-#define kNavigationBarBackground @"head_background.png"
-#define kMainBackgound @"main_background.png"
-#define kLeftSideBarButtonBackground @"icon_pic_enable.png"
-#define kRightSideBarButtonBackground @"icon_new_enable.png"
-
 
 @interface RMTabbedViewController ()<InfiniTabBarDelegate,UITabbedTableViewDelegate>
 @property(nonatomic,copy)NSString* mUrl;
@@ -64,8 +50,7 @@
     [super dealloc];
 }
 
-#define kTabBarHeight 49
-#define kNavigationBarHeight 44
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -86,24 +71,24 @@
     [photobtn setHidden:NO];
     [self.view addSubview:photobtn];
     
-    UIButton* fourTypebtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [fourTypebtn setFrame:CGRectMake(kMarginToBoundaryX+kDefaultButtonSize,kMarginToTopBoundary,kMiddleSpace,kDefaultButtonSize)];
-    [fourTypebtn setTitle:self.mTitle?self.mTitle:kDefaultTitle forState:UIControlStateNormal];
-    [fourTypebtn.titleLabel setFont:[UIFont boldSystemFontOfSize:kTitleFontSize]];
-    fourTypebtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [fourTypebtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [fourTypebtn addTarget:self action:@selector(BtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    UIButton* leftViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftViewBtn setFrame:CGRectMake(kMarginToBoundaryX+kDefaultButtonSize,kMarginToTopBoundary,kMiddleSpace,kDefaultButtonSize)];
+    [leftViewBtn setTitle:self.mTitle?self.mTitle:kDefaultTitle forState:UIControlStateNormal];
+    [leftViewBtn.titleLabel setFont:[UIFont boldSystemFontOfSize:kTitleFontSize]];
+    leftViewBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [leftViewBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [leftViewBtn addTarget:self action:@selector(BtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     //    [fourTypebtn setTag:FFourtype];
-    [fourTypebtn setHidden:NO];
-    [self.view addSubview:fourTypebtn];
+    [leftViewBtn setHidden:NO];
+    [self.view addSubview:leftViewBtn];
     
-    UIButton* writebtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [writebtn setFrame:CGRectMake(kDeviceWidth-kDefaultButtonSize-kMarginToBoundaryX,kMarginToTopBoundary,kDefaultButtonSize,kDefaultButtonSize)];
-    [writebtn setImage:[UIImage imageNamed:kRightSideBarButtonBackground] forState:UIControlStateNormal];
-    [writebtn addTarget:self action:@selector(saveAsDefaultAster:) forControlEvents:UIControlEventTouchUpInside];
+    UIButton* rightViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightViewBtn setFrame:CGRectMake(kDeviceWidth-kDefaultButtonSize-kMarginToBoundaryX,kMarginToTopBoundary,kDefaultButtonSize,kDefaultButtonSize)];
+    [rightViewBtn setImage:[UIImage imageNamed:kRightSideBarButtonBackground] forState:UIControlStateNormal];
+    [rightViewBtn addTarget:self action:@selector(saveAsDefaultAster:) forControlEvents:UIControlEventTouchUpInside];
     //    [writebtn setTag:FWrite];
-    [writebtn setHidden:NO];
-    [self.view addSubview:writebtn];
+    [rightViewBtn setHidden:NO];
+    [self.view addSubview:rightViewBtn];
     
     //add tableview
     CGRect rc = [[UIScreen mainScreen]applicationFrame];

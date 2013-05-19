@@ -10,6 +10,6 @@
 
 @protocol SiderBarDelegate;
 
-@interface RMLeftSideViewController : JMStaticContentTableViewController
+@interface RMLeftSideViewController : UIViewController
 @property (assign,nonatomic)id<SiderBarDelegate>delegate;
 @end

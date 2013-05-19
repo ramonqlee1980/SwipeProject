@@ -13,8 +13,6 @@
 #import "RMTabbedViewController.h"
 
 
-
-
 @implementation RMAppDelegate
 
 #pragma mark SideBarViewControllerDelegate
@@ -37,14 +35,15 @@
     //TODO::channel views
     RMLeftSideViewController* left = [[[RMLeftSideViewController alloc]init]autorelease];
     left.delegate = delegate;
-    return [[[UINavigationController alloc]initWithRootViewController:left]autorelease];
+    return left;
 }
 -(UIViewController*)rightViewController:(id<SiderBarDelegate>)delegate
 {
     //TODO::settings,recommend,etc
-    RMRightSideViewController* right= [[[RMRightSideViewController alloc]init]autorelease];
-    right.delegate = delegate;
-    return [[[UINavigationController alloc]initWithRootViewController:right]autorelease];
+    return nil;
+//    RMRightSideViewController* right= [[[RMRightSideViewController alloc]init]autorelease];
+//    right.delegate = delegate;
+//    return [[[UINavigationController alloc]initWithRootViewController:right]autorelease];
 }
 
 #pragma mark AppDelegate
