@@ -95,6 +95,21 @@
 		30E6E7F51734E5A000EDE8D2 /* StaticTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E6E7EB1734E5A000EDE8D2 /* StaticTextFieldTableViewCell.m */; };
 		30E6E7F61734E5A000EDE8D2 /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E6E7EE1734E5A000EDE8D2 /* SideBarViewController.m */; };
 		30E6E7F71734E5A000EDE8D2 /* SideBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E6E7EF1734E5A000EDE8D2 /* SideBarViewController.xib */; };
+		30F4308B1748FE1E002850E6 /* Aquarius.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F4308A1748FE1E002850E6 /* Aquarius.gif */; };
+		30F430971748FF3C002850E6 /* Aries.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F4308C1748FF3C002850E6 /* Aries.gif */; };
+		30F430981748FF3C002850E6 /* Cancer.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F4308D1748FF3C002850E6 /* Cancer.gif */; };
+		30F430991748FF3C002850E6 /* Capricorn.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F4308E1748FF3C002850E6 /* Capricorn.gif */; };
+		30F4309A1748FF3C002850E6 /* Gemini.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F4308F1748FF3C002850E6 /* Gemini.gif */; };
+		30F4309B1748FF3C002850E6 /* Leo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F430901748FF3C002850E6 /* Leo.gif */; };
+		30F4309C1748FF3C002850E6 /* Libra.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F430911748FF3C002850E6 /* Libra.gif */; };
+		30F4309D1748FF3C002850E6 /* Pisces.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F430921748FF3C002850E6 /* Pisces.gif */; };
+		30F4309E1748FF3C002850E6 /* Sagittarius.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F430931748FF3C002850E6 /* Sagittarius.gif */; };
+		30F4309F1748FF3C002850E6 /* Scorpio.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F430941748FF3C002850E6 /* Scorpio.gif */; };
+		30F430A01748FF3C002850E6 /* Taurus.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F430951748FF3C002850E6 /* Taurus.gif */; };
+		30F430A11748FF3C002850E6 /* Virgo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30F430961748FF3C002850E6 /* Virgo.gif */; };
+		30F430A417498108002850E6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F430A317498108002850E6 /* SettingsViewController.m */; };
+		30F430A717498821002850E6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30F430A917498821002850E6 /* Localizable.strings */; };
+		30F430AF17499146002850E6 /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F430AE17499146002850E6 /* settings-icon.png */; };
 		30F9F0F617446AA9008835E3 /* LeftChannels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30F9F0F517446AA9008835E3 /* LeftChannels.plist */; };
 /* End PBXBuildFile section */
 
@@ -262,6 +277,22 @@
 		30E6E7ED1734E5A000EDE8D2 /* SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarViewController.h; sourceTree = "<group>"; };
 		30E6E7EE1734E5A000EDE8D2 /* SideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarViewController.m; sourceTree = "<group>"; };
 		30E6E7EF1734E5A000EDE8D2 /* SideBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideBarViewController.xib; sourceTree = "<group>"; };
+		30F4308A1748FE1E002850E6 /* Aquarius.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Aquarius.gif; sourceTree = "<group>"; };
+		30F4308C1748FF3C002850E6 /* Aries.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Aries.gif; sourceTree = "<group>"; };
+		30F4308D1748FF3C002850E6 /* Cancer.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Cancer.gif; sourceTree = "<group>"; };
+		30F4308E1748FF3C002850E6 /* Capricorn.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Capricorn.gif; sourceTree = "<group>"; };
+		30F4308F1748FF3C002850E6 /* Gemini.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Gemini.gif; sourceTree = "<group>"; };
+		30F430901748FF3C002850E6 /* Leo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Leo.gif; sourceTree = "<group>"; };
+		30F430911748FF3C002850E6 /* Libra.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Libra.gif; sourceTree = "<group>"; };
+		30F430921748FF3C002850E6 /* Pisces.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Pisces.gif; sourceTree = "<group>"; };
+		30F430931748FF3C002850E6 /* Sagittarius.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Sagittarius.gif; sourceTree = "<group>"; };
+		30F430941748FF3C002850E6 /* Scorpio.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Scorpio.gif; sourceTree = "<group>"; };
+		30F430951748FF3C002850E6 /* Taurus.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Taurus.gif; sourceTree = "<group>"; };
+		30F430961748FF3C002850E6 /* Virgo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Virgo.gif; sourceTree = "<group>"; };
+		30F430A217498108002850E6 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		30F430A317498108002850E6 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		30F430A817498821002850E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		30F430AE17499146002850E6 /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
 		30F9F0F517446AA9008835E3 /* LeftChannels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LeftChannels.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -373,6 +404,7 @@
 		305D53C317347DA7003F7913 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				30F430A917498821002850E6 /* Localizable.strings */,
 				305D53C417347DA7003F7913 /* SwipeProject-Info.plist */,
 				305D53C517347DA7003F7913 /* InfoPlist.strings */,
 				305D53C817347DA7003F7913 /* main.m */,
@@ -562,6 +594,19 @@
 		30E1A92A1739E92B0027F2DD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				30F430AE17499146002850E6 /* settings-icon.png */,
+				30F4308C1748FF3C002850E6 /* Aries.gif */,
+				30F4308D1748FF3C002850E6 /* Cancer.gif */,
+				30F4308E1748FF3C002850E6 /* Capricorn.gif */,
+				30F4308F1748FF3C002850E6 /* Gemini.gif */,
+				30F430901748FF3C002850E6 /* Leo.gif */,
+				30F430911748FF3C002850E6 /* Libra.gif */,
+				30F430921748FF3C002850E6 /* Pisces.gif */,
+				30F430931748FF3C002850E6 /* Sagittarius.gif */,
+				30F430941748FF3C002850E6 /* Scorpio.gif */,
+				30F430951748FF3C002850E6 /* Taurus.gif */,
+				30F430961748FF3C002850E6 /* Virgo.gif */,
+				30F4308A1748FE1E002850E6 /* Aquarius.gif */,
 				30234672173A2D59001802DA /* head_background.png */,
 				30E1A9391739E92B0027F2DD /* Default.png */,
 				30E1A93A1739E92B0027F2DD /* Default@2x.png */,
@@ -586,6 +631,8 @@
 		30E6E7DF1734E33E00EDE8D2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				30F430A217498108002850E6 /* SettingsViewController.h */,
+				30F430A317498108002850E6 /* SettingsViewController.m */,
 				30DA9049173519C700A61EEF /* RMLeftSideViewController.h */,
 				30DA904A173519C700A61EEF /* RMLeftSideViewController.m */,
 				30DFC96B173539720071D4DE /* RMTableViewController.h */,
@@ -712,6 +759,20 @@
 				30234667173A29EC001802DA /* README.md in Resources */,
 				30234673173A2D59001802DA /* head_background.png in Resources */,
 				30F9F0F617446AA9008835E3 /* LeftChannels.plist in Resources */,
+				30F4308B1748FE1E002850E6 /* Aquarius.gif in Resources */,
+				30F430971748FF3C002850E6 /* Aries.gif in Resources */,
+				30F430981748FF3C002850E6 /* Cancer.gif in Resources */,
+				30F430991748FF3C002850E6 /* Capricorn.gif in Resources */,
+				30F4309A1748FF3C002850E6 /* Gemini.gif in Resources */,
+				30F4309B1748FF3C002850E6 /* Leo.gif in Resources */,
+				30F4309C1748FF3C002850E6 /* Libra.gif in Resources */,
+				30F4309D1748FF3C002850E6 /* Pisces.gif in Resources */,
+				30F4309E1748FF3C002850E6 /* Sagittarius.gif in Resources */,
+				30F4309F1748FF3C002850E6 /* Scorpio.gif in Resources */,
+				30F430A01748FF3C002850E6 /* Taurus.gif in Resources */,
+				30F430A11748FF3C002850E6 /* Virgo.gif in Resources */,
+				30F430A717498821002850E6 /* Localizable.strings in Resources */,
+				30F430AF17499146002850E6 /* settings-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +843,7 @@
 				3023466B173A29EC001802DA /* UIImageView+WebCache.m in Sources */,
 				3023466F173A2A1D001802DA /* GifView.m in Sources */,
 				30AA9175173E3CD3006B6B49 /* SwipeView.m in Sources */,
+				30F430A417498108002850E6 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,6 +856,15 @@
 				305D53C617347DA7003F7913 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		30F430A917498821002850E6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30F430A817498821002850E6 /* en */,
+			);
+			name = Localizable.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -9,11 +9,16 @@
 #import "RMTabbedViewController.h"
 #import "InfiniTabBar.h"
 #import "RMTableViewController.h"
+#import "RMAppDelegate.h"
+#import "SettingsViewController.h"
 
 #define kDefaultResouceUrl @"http://www.idreems.com/openapi/aster.php?type=shuangzi"
 
 
 @interface RMTabbedViewController ()<InfiniTabBarDelegate,UITabbedTableViewDelegate>
+{
+    SideBarShowDirection direction;
+}
 @property(nonatomic,copy)NSString* mUrl;
 @property(nonatomic,copy)NSString* mTitle;
 @property(nonatomic,assign)InfiniTabBar* tabBar;
@@ -55,6 +60,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    direction = SideBarShowDirectionNone;
     
     //添加headbar
     UIImageView *headView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:kNavigationBarBackground]];
@@ -66,7 +72,7 @@
     UIButton* photobtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [photobtn setFrame:CGRectMake(kMarginToBoundaryX,kMarginToTopBoundary,kDefaultButtonSize,kDefaultButtonSize)];
     [photobtn setBackgroundImage:[UIImage imageNamed:kLeftSideBarButtonBackground] forState:UIControlStateNormal];
-    [photobtn addTarget:self action:@selector(BtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [photobtn addTarget:self action:@selector(showLeftSidebar:) forControlEvents:UIControlEventTouchUpInside];
     //    [photobtn setTag:FPhoto];
     [photobtn setHidden:NO];
     [self.view addSubview:photobtn];
@@ -81,6 +87,14 @@
     //    [fourTypebtn setTag:FFourtype];
     [leftViewBtn setHidden:NO];
     [self.view addSubview:leftViewBtn];
+    
+    UIButton* settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [settingBtn setFrame:CGRectMake(kDeviceWidth-kDefaultButtonSize-kMarginToBoundaryX-kDefaultButtonSize-kMarginToBoundaryX,kMarginToTopBoundary,kDefaultButtonSize,kDefaultButtonSize)];
+    [settingBtn setImage:[UIImage imageNamed:kIconSetting] forState:UIControlStateNormal];
+    [settingBtn addTarget:self action:@selector(settingClick:) forControlEvents:UIControlEventTouchUpInside];
+    //    [writebtn setTag:FWrite];
+    [settingBtn setHidden:NO];
+    [self.view addSubview:settingBtn];
     
     UIButton* rightViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightViewBtn setFrame:CGRectMake(kDeviceWidth-kDefaultButtonSize-kMarginToBoundaryX,kMarginToTopBoundary,kDefaultButtonSize,kDefaultButtonSize)];
@@ -99,6 +113,16 @@
     [self.tableView setUrl:self.mUrl?self.mUrl:kDefaultResouceUrl];
     [self.view addSubview:tableView.view];
     self.tableView.delegate = self;
+}
+-(void)settingClick:(UIView*)sender
+{
+    SettingsViewController* controller = [[[SettingsViewController alloc]init]autorelease];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+-(void)showLeftSidebar:(UIView*)sender
+{
+    RMAppDelegate* appDelegate = (RMAppDelegate*)[[UIApplication sharedApplication] delegate];
+    [appDelegate showSideBarControllerWithDirection:SideBarShowDirectionLeft];
 }
 -(void)saveAsDefaultAster:(UIView*)sender
 {
@@ -126,7 +150,6 @@
 }
 -(void)BtnClicked:(UIView*)sender
 {
-    
 }
 
 - (void)didReceiveMemoryWarning

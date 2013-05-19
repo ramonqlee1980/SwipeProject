@@ -12,12 +12,6 @@
 #define kItemPerSection 2
 //#define kHuakangFontName @"DFPShaoNvW5"
 
-#define kAdd2Favorite @"kAdd2Favorite"
-//icon for tabbar
-#define kIconHomePage @"ICN_homepage"
-#define kIconFun @"ICN_download"
-#define kIconFavorite @"ICN_badge-favorite"
-#define kIconSetting @"ICN_setting"
 
 #define kPostNotification @"kPostNotification"//notification for post
 #define kPostResponseData @"kPostResponseData"

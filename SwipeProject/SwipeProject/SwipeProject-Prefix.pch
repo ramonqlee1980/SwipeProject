@@ -35,6 +35,7 @@
 #define kMainBackgound @"main_background.png"
 #define kLeftSideBarButtonBackground @"icon_pic_enable.png"
 #define kRightSideBarButtonBackground @"icon_new_enable.png"
+#define kIconSetting @"settings-icon.png"
 
 //const for aster
 #define kAsterName @"kAsterName"
@@ -43,3 +44,4 @@
 #define kUrl @"Url"
 #define kIcon @"Icon"
 #define kTimeSpan @"TimeSpan"
+#define kOrder @"order"

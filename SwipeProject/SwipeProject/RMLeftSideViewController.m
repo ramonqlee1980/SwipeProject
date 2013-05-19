@@ -9,6 +9,7 @@
 #import "RMLeftSideViewController.h"
 #import "SideBarViewController.h"
 #import "RMTabbedViewController.h"
+#import "SettingsViewController.h"
 
 //index for controller construction
 #define kPopularMakeupIndex 0
@@ -43,13 +44,24 @@
     [super viewDidLoad];
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"LeftChannels" ofType:@"plist"];
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    NSLog(@"%@", data);//直接打印数据
+    
     
     if (!items) {
         items = [[NSMutableArray alloc]init];
     }
     [items addObjectsFromArray:[data allValues]];
 
+    //sort
+    NSSortDescriptor * descriptor =[[[NSSortDescriptor alloc] initWithKey:kOrder ascending:YES comparator:^(id order1, id order2) {
+        NSString* v1 = (NSString*)order1;
+        NSString* v2 = (NSString*)order2;
+        
+        
+        return [v1 intValue]>=[v2 intValue];
+    }]autorelease];
+    [items sortUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+    NSLog(@"%@", items);//直接打印数据
+    
     CGRect frame = self.view.frame;
     frame.origin.y = 0;
     self.view.frame = frame;
@@ -63,7 +75,7 @@
     UIButton* photobtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [photobtn setFrame:CGRectMake(kMarginToBoundaryX,kMarginToTopBoundary,kDefaultButtonSize,kDefaultButtonSize)];
     [photobtn setBackgroundImage:[UIImage imageNamed:kLeftSideBarButtonBackground] forState:UIControlStateNormal];
-    [photobtn addTarget:self action:@selector(BtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [photobtn addTarget:self action:@selector(settingClick:) forControlEvents:UIControlEventTouchUpInside];
     //    [photobtn setTag:FPhoto];
     [photobtn setHidden:YES];
     [self.view addSubview:photobtn];
@@ -133,8 +145,13 @@
     cell.selectionStyle = UITableViewCellStyleValue1;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    
-    cell.textLabel.text = [dict objectForKey:kTitle];
+    NSString* text = [NSString stringWithFormat:@"%@(%@)",[dict objectForKey:kTitle],[dict objectForKey:kTimeSpan]];
+    NSString *path = [[NSBundle mainBundle] pathForResource:[dict objectForKey:kIcon] ofType:@"gif"];
+    UIImage* image = [UIImage imageWithContentsOfFile:path];
+    if (image) {
+        cell.imageView.image = image;
+    }
+    cell.textLabel.text = text;
     return cell;
 }
 
@@ -156,5 +173,10 @@
 {
     //kPopularMakeupIndex
     return [[[RMTabbedViewController alloc]init:url withTitle:title]autorelease];
+}
+-(void)settingClick:(UIView*)sender
+{
+    SettingsViewController* controller = [[[SettingsViewController alloc]init]autorelease];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 @end

@@ -15,4 +15,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) MiddleViewController *viewController;
+@property(nonatomic,assign)SideBarViewController* sideBarController;
+
+- (void)showSideBarControllerWithDirection:(SideBarShowDirection)direction;
 @end

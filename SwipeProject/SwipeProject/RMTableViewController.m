@@ -21,7 +21,7 @@
 
 #define kInitItemCount 20
 #define kIncrementItemCount 10
-#define kLoadMoreFakeDelay 1.0f
+#define kLoadMoreFakeDelay 0.5f
 #define kDefaultFilePath @"cache"
 
 #define kRefreshFileName(url) [NSString stringWithFormat:@"%@%@",@"Refresh_",[CommonHelper cachePathForKey:url] ]

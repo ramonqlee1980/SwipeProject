@@ -46,6 +46,13 @@
 //    return [[[UINavigationController alloc]initWithRootViewController:right]autorelease];
 }
 
+- (void)showSideBarControllerWithDirection:(SideBarShowDirection)direction
+{
+    if (self.sideBarController) {
+        [self.sideBarController showSideBarControllerWithDirection:direction];
+    }
+}
+
 #pragma mark AppDelegate
 - (void)dealloc
 {
@@ -61,10 +68,9 @@
     
     [self setDefaultSettingsIfNotSet];
     
-    SideBarViewController* sideBarController = [[SideBarViewController alloc]initWithNibName:@"SideBarViewController" bundle:nil];
-    sideBarController.delegate = self;
-    self.window.rootViewController = sideBarController;
-    [sideBarController release];
+    self.sideBarController = [[SideBarViewController alloc]initWithNibName:@"SideBarViewController" bundle:nil];
+    self.sideBarController.delegate = self;
+    self.window.rootViewController = self.sideBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -27,6 +27,7 @@ const int ContentMinOffset=60;
 const float MoveAnimationDuration = 0.2;
 @synthesize leftSideBarViewController;
 @synthesize rightSideBarViewController;
+
 + (id)share
 {
     return rootViewCon;
@@ -78,6 +79,12 @@ const float MoveAnimationDuration = 0.2;
 }
 - (void)showSideBarControllerWithDirection:(SideBarShowDirection)direction
 {
+    //bug fix:when sidebar show,just hide it
+    if(sideBarShowing)
+    {
+        direction = SideBarShowDirectionNone;
+    }
+    
     if (direction!=SideBarShowDirectionNone) {
         UIView *view ;
         if (direction == SideBarShowDirectionLeft)
@@ -147,8 +154,26 @@ const float MoveAnimationDuration = 0.2;
 }
 - (void)panInContentView:(UIPanGestureRecognizer *)abc
 {
-    
-	if (abc.state == UIGestureRecognizerStateChanged)
+    //bug fix:forbide pan in certain direction
+    if (abc.state == UIGestureRecognizerStateBegan)
+    {
+        CGFloat translation = [abc translationInView:self.contentView].x;
+        self.contentView.transform = CGAffineTransformMakeTranslation(translation+currentTranslate, 0);
+        if (translation+currentTranslate>0)
+        {
+            if (nil==self.leftSideBarViewController) {
+                [abc setTranslation:CGPointMake(0, 0) inView:self.contentView];
+                return;
+            }
+        }else
+        {
+            if (nil==self.rightSideBarViewController) {
+                [abc setTranslation:CGPointMake(0, 0) inView:self.contentView];
+                return;
+            }
+        }
+	}
+    else if (abc.state == UIGestureRecognizerStateChanged)
     {
         CGFloat translation = [abc translationInView:self.contentView].x;
         self.contentView.transform = CGAffineTransformMakeTranslation(translation+currentTranslate, 0);
@@ -156,12 +181,14 @@ const float MoveAnimationDuration = 0.2;
         if (translation+currentTranslate>0)
         {
             if (nil==self.leftSideBarViewController) {
+                [abc setTranslation:CGPointMake(0, 0) inView:self.contentView];
                 return;
             }
             view = self.leftSideBarViewController.view;
         }else
         {
             if (nil==self.rightSideBarViewController) {
+                [abc setTranslation:CGPointMake(0, 0) inView:self.contentView];
                 return;
             }
             view = self.rightSideBarViewController.view;

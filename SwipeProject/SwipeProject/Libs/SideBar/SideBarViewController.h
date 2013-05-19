@@ -38,6 +38,7 @@ typedef enum _SideBarShowDirection
 @property (strong,nonatomic)IBOutlet UIView *contentView;
 @property (strong,nonatomic)IBOutlet UIView *navBackView;
 
+
 - (void)showSideBarControllerWithDirection:(SideBarShowDirection)direction;
 @end
 
