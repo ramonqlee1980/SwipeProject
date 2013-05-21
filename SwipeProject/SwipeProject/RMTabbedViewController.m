@@ -93,13 +93,13 @@
     [settingBtn setImage:[UIImage imageNamed:kIconSetting] forState:UIControlStateNormal];
     [settingBtn addTarget:self action:@selector(settingClick:) forControlEvents:UIControlEventTouchUpInside];
     //    [writebtn setTag:FWrite];
-    [settingBtn setHidden:NO];
+    [settingBtn setHidden:YES];
     [self.view addSubview:settingBtn];
     
     UIButton* rightViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightViewBtn setFrame:CGRectMake(kDeviceWidth-kDefaultButtonSize-kMarginToBoundaryX,kMarginToTopBoundary,kDefaultButtonSize,kDefaultButtonSize)];
     [rightViewBtn setImage:[UIImage imageNamed:kRightSideBarButtonBackground] forState:UIControlStateNormal];
-    [rightViewBtn addTarget:self action:@selector(saveAsDefaultAster:) forControlEvents:UIControlEventTouchUpInside];
+    [rightViewBtn addTarget:self action:@selector(settingClick:) forControlEvents:UIControlEventTouchUpInside];
     //    [writebtn setTag:FWrite];
     [rightViewBtn setHidden:NO];
     [self.view addSubview:rightViewBtn];

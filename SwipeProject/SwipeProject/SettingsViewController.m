@@ -47,7 +47,7 @@ NSString* reuseIdentifier = @"UITableViewCellStyleDefault";
     rc.origin.x = 0;
     rc.size.height = rc.size.height-kNavigationBarHeight;
     //rc.size.width = kDeviceWidth-kSideBarMargin;
-    UITableView* tableView = [[[UITableView alloc]initWithFrame:rc]autorelease];
+    UITableView* tableView = [[[UITableView alloc]initWithFrame:rc style:UITableViewStyleGrouped]autorelease];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];

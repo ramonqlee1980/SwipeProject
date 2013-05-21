@@ -11,6 +11,9 @@
 #import "UIWebViewAdditions.h"
 #import "UnpreventableUILongPressGestureRecognizer.h"
 
+
+static NSString *const iRateiOSAppStoreURLFormat = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%u";
+
 @interface CIALBrowserViewController ()
 - (void)addBookmark;
 - (void)updateLoadingStatus;
@@ -653,8 +656,13 @@
     } else if (sendUrlButtonIndex == buttonIndex) {
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         [mailViewController setSubject:[webView stringByEvaluatingJavaScriptFromString:@"document.title"]];
-        [mailViewController setMessageBody:[self.url absoluteString]
-                                    isHTML:NO];
+        /*
+        NSString* url = [NSString stringWithFormat:iRateiOSAppStoreURLFormat, (unsigned int)[config appleId]];
+        NSMutableString* body = [NSMutableString stringWithFormat:@"<a href=\"%@\">%@</a>",url,NSLocalizedString(@"Title", @"")];
+        [body appendString:[webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]];
+        */
+        [mailViewController setMessageBody:[webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]
+                                    isHTML:YES];
         
         mailViewController.mailComposeDelegate = self;
         

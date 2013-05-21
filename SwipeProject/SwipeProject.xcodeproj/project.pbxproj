@@ -16,6 +16,8 @@
 		3023466F173A2A1D001802DA /* GifView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3023466E173A2A1D001802DA /* GifView.m */; };
 		30234671173A2C93001802DA /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30234670173A2C93001802DA /* ImageIO.framework */; };
 		30234673173A2D59001802DA /* head_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 30234672173A2D59001802DA /* head_background.png */; };
+		3047DA8B174AE4560076A770 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 3047DA8A174AE4560076A770 /* Icon-57.png */; };
+		3047DA8D174AE45D0076A770 /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 3047DA8C174AE45D0076A770 /* Icon-114.png */; };
 		305D53BD17347DA7003F7913 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D53BC17347DA7003F7913 /* UIKit.framework */; };
 		305D53BF17347DA7003F7913 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D53BE17347DA7003F7913 /* Foundation.framework */; };
 		305D53C117347DA7003F7913 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D53C017347DA7003F7913 /* CoreGraphics.framework */; };
@@ -132,6 +134,8 @@
 		3023466E173A2A1D001802DA /* GifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifView.m; sourceTree = "<group>"; };
 		30234670173A2C93001802DA /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		30234672173A2D59001802DA /* head_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_background.png; sourceTree = "<group>"; };
+		3047DA8A174AE4560076A770 /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-57.png"; path = "../../Icon-57.png"; sourceTree = "<group>"; };
+		3047DA8C174AE45D0076A770 /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-114.png"; path = "../../Icon-114.png"; sourceTree = "<group>"; };
 		305D53B917347DA7003F7913 /* SwipeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		305D53BC17347DA7003F7913 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		305D53BE17347DA7003F7913 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -254,8 +258,6 @@
 		30DFC96E17353ADD0071D4DE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		30DFC97017353DAD0071D4DE /* RMRightSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMRightSideViewController.h; sourceTree = "<group>"; };
 		30DFC97117353DAD0071D4DE /* RMRightSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMRightSideViewController.m; sourceTree = "<group>"; };
-		30E1A9391739E92B0027F2DD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		30E1A93A1739E92B0027F2DD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		30E1A9481739E92B0027F2DD /* icon_new_enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_new_enable.png; sourceTree = "<group>"; };
 		30E1A9491739E92B0027F2DD /* icon_pic_enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pic_enable.png; sourceTree = "<group>"; };
 		30E1A9511739E92B0027F2DD /* main_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_background.png; sourceTree = "<group>"; };
@@ -291,7 +293,7 @@
 		30F430961748FF3C002850E6 /* Virgo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Virgo.gif; sourceTree = "<group>"; };
 		30F430A217498108002850E6 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		30F430A317498108002850E6 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		30F430A817498821002850E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		30F430A817498821002850E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		30F430AE17499146002850E6 /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
 		30F9F0F517446AA9008835E3 /* LeftChannels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LeftChannels.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -594,6 +596,8 @@
 		30E1A92A1739E92B0027F2DD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3047DA8C174AE45D0076A770 /* Icon-114.png */,
+				3047DA8A174AE4560076A770 /* Icon-57.png */,
 				30F430AE17499146002850E6 /* settings-icon.png */,
 				30F4308C1748FF3C002850E6 /* Aries.gif */,
 				30F4308D1748FF3C002850E6 /* Cancer.gif */,
@@ -608,8 +612,6 @@
 				30F430961748FF3C002850E6 /* Virgo.gif */,
 				30F4308A1748FE1E002850E6 /* Aquarius.gif */,
 				30234672173A2D59001802DA /* head_background.png */,
-				30E1A9391739E92B0027F2DD /* Default.png */,
-				30E1A93A1739E92B0027F2DD /* Default@2x.png */,
 				30E1A9481739E92B0027F2DD /* icon_new_enable.png */,
 				30E1A9491739E92B0027F2DD /* icon_pic_enable.png */,
 				30E1A9511739E92B0027F2DD /* main_background.png */,
@@ -773,6 +775,8 @@
 				30F430A11748FF3C002850E6 /* Virgo.gif in Resources */,
 				30F430A717498821002850E6 /* Localizable.strings in Resources */,
 				30F430AF17499146002850E6 /* settings-icon.png in Resources */,
+				3047DA8B174AE4560076A770 /* Icon-57.png in Resources */,
+				3047DA8D174AE45D0076A770 /* Icon-114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -930,13 +934,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ming Li (QBJ9PY6FYT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SwipeProject/SwipeProject-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "SwipeProject/SwipeProject-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "20DA0E84-F143-49A6-BB0E-1722D5903294";
+				PROVISIONING_PROFILE = "4055C347-583B-4CB9-9D5B-2647C1C9464E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -945,13 +952,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ming Li (QBJ9PY6FYT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SwipeProject/SwipeProject-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "SwipeProject/SwipeProject-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "20DA0E84-F143-49A6-BB0E-1722D5903294";
+				PROVISIONING_PROFILE = "4055C347-583B-4CB9-9D5B-2647C1C9464E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
