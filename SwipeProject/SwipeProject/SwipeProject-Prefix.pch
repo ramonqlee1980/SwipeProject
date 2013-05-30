@@ -18,7 +18,7 @@
 #define kDeviceHeight [[UIScreen mainScreen]applicationFrame].size.height
 
 #define kSideBarMargin  50
-
+#define kAppleId 651216679
 
 #define kDefaultTitle @"随便逛逛"
 #define kTitleFontSize 18

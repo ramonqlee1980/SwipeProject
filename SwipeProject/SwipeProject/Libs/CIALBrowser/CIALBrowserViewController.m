@@ -656,13 +656,20 @@ static NSString *const iRateiOSAppStoreURLFormat = @"itms-apps://ax.itunes.apple
     } else if (sendUrlButtonIndex == buttonIndex) {
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         [mailViewController setSubject:[webView stringByEvaluatingJavaScriptFromString:@"document.title"]];
-        /*
-        NSString* url = [NSString stringWithFormat:iRateiOSAppStoreURLFormat, (unsigned int)[config appleId]];
-        NSMutableString* body = [NSMutableString stringWithFormat:@"<a href=\"%@\">%@</a>",url,NSLocalizedString(@"Title", @"")];
+        
+        
+#if 1
+        NSString* url = [NSString stringWithFormat:iRateiOSAppStoreURLFormat, kAppleId];
+        NSString* tip = NSLocalizedString(@"Title", @"");
+        tip = [NSString stringWithFormat:@"下载 %@ 看更多星座物语",tip];
+        NSMutableString* body = [NSMutableString stringWithFormat:@"<a href=\"%@\">%@</a>",url,tip];
         [body appendString:[webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]];
-        */
+        [mailViewController setMessageBody:body
+                                    isHTML:YES];
+#else
         [mailViewController setMessageBody:[webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]
                                     isHTML:YES];
+#endif
         
         mailViewController.mailComposeDelegate = self;
         
