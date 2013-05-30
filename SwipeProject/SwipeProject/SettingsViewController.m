@@ -41,6 +41,7 @@ NSString* reuseIdentifier = @"UITableViewCellStyleDefault";
     [photobtn setHidden:NO];
     [self.view addSubview:photobtn];
     
+    
     //add tableview
     CGRect rc = [[UIScreen mainScreen]applicationFrame];
     rc.origin.y = kNavigationBarHeight;
