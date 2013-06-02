@@ -15,6 +15,9 @@
 static NSString *const iRateiOSAppStoreURLFormat = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%u";
 
 @interface CIALBrowserViewController ()
+{
+    NSString* mHtmlBody;
+}
 - (void)addBookmark;
 - (void)updateLoadingStatus;
 - (void)longPressRecognized:(UILongPressGestureRecognizer *)gestureRecognizer;
@@ -445,8 +448,8 @@ static NSString *const iRateiOSAppStoreURLFormat = @"itms-apps://ax.itunes.apple
     [webView stringByEvaluatingJavaScriptFromString: jsCode];
     
     // get the Tags at the touch location
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"removeLinks(%@);",@"document"]];
-//    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"removeAllOccurencesOfStringForElement(%@,%@);",@"document.body",@"ZAKER"]];
+    mHtmlBody = [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"removeLinks(%@);",@"document"]];
+    //[webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"removeAllOccurencesOfStringForElement(%@,%@);",@"document.body",@"ZAKER"]];
     
     
     // Disable the defaut actionSheet when doing a long press
@@ -661,9 +664,11 @@ static NSString *const iRateiOSAppStoreURLFormat = @"itms-apps://ax.itunes.apple
 #if 1
         NSString* url = [NSString stringWithFormat:iRateiOSAppStoreURLFormat, kAppleId];
         NSString* tip = NSLocalizedString(@"Title", @"");
-        tip = [NSString stringWithFormat:@"下载 %@ 看更多星座物语",tip];
-        NSMutableString* body = [NSMutableString stringWithFormat:@"<a href=\"%@\">%@</a>",url,tip];
+        tip = [NSString stringWithFormat:@"下 %@ 看更多星座物语",tip];
+        NSMutableString* body = [NSMutableString stringWithFormat:@"<a href=\"%@\" style=\"color: rgb(255,0,0)\">%@</a>",url,tip];
         [body appendString:[webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]];
+        NSString* kToBeReplacedString = @"下载ZAKER获取更多精彩资讯";
+        [body replaceOccurrencesOfString:kToBeReplacedString withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0,body.length)];
         [mailViewController setMessageBody:body
                                     isHTML:YES];
 #else

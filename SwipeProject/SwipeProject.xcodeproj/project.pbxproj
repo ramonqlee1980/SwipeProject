@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300CF2FB175B3B92007913DA /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF2FA175B3B92007913DA /* libFlurry.a */; };
 		30234666173A29EC001802DA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 30234658173A29EC001802DA /* LICENSE */; };
 		30234667173A29EC001802DA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 30234659173A29EC001802DA /* README.md */; };
 		30234668173A29EC001802DA /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3023465B173A29EC001802DA /* SDImageCache.m */; };
@@ -117,6 +118,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		300CF2F9175B3B92007913DA /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		300CF2FA175B3B92007913DA /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		30234658173A29EC001802DA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		30234659173A29EC001802DA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3023465A173A29EC001802DA /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -317,12 +320,23 @@
 				305D53BD17347DA7003F7913 /* UIKit.framework in Frameworks */,
 				305D53BF17347DA7003F7913 /* Foundation.framework in Frameworks */,
 				305D53C117347DA7003F7913 /* CoreGraphics.framework in Frameworks */,
+				300CF2FB175B3B92007913DA /* libFlurry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		300CF2F8175B3B92007913DA /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				300CF2F9175B3B92007913DA /* Flurry.h */,
+				300CF2FA175B3B92007913DA /* libFlurry.a */,
+			);
+			name = Flurry;
+			path = "Flurry-iOS-4.2.1/Flurry";
+			sourceTree = "<group>";
+		};
 		30234657173A29EC001802DA /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +667,7 @@
 		30E6E7E11734E5A000EDE8D2 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				300CF2F8175B3B92007913DA /* Flurry */,
 				30AA9172173E3CD3006B6B49 /* SwipeView */,
 				3023466C173A2A1D001802DA /* Gifview */,
 				30234657173A29EC001802DA /* SDWebImage */,
@@ -937,15 +952,19 @@
 		305D53D717347DA8003F7913 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ming Li (QBJ9PY6FYT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SwipeProject/SwipeProject-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "SwipeProject/SwipeProject-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SwipeProject/Libs/Flurry-iOS-4.2.1/Flurry\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DAAAC6C4-D0CE-4EBE-BB4D-E6589B55E237";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -955,15 +974,19 @@
 		305D53D817347DA8003F7913 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ming Li (QBJ9PY6FYT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SwipeProject/SwipeProject-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "SwipeProject/SwipeProject-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SwipeProject/Libs/Flurry-iOS-4.2.1/Flurry\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DAAAC6C4-D0CE-4EBE-BB4D-E6589B55E237";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

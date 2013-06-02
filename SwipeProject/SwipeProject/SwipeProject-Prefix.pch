@@ -45,3 +45,5 @@
 #define kIcon @"Icon"
 #define kTimeSpan @"TimeSpan"
 #define kOrder @"order"
+
+#define kFlurryAppKey @"NJD7XSKCGJG6KW67BBRM"
